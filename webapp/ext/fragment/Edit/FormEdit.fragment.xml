@@ -1,0 +1,96 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog
+        id="mainDialog"
+        title="Form chỉnh sửa các chỉ tiêu"
+    >
+        <content>
+            <VBox
+                class="sapUiSmallMargin"
+                id="formContainer"
+            >
+                <f:SimpleForm
+                    id="FormEdit_1"
+                    editable="true"
+                    layout="ColumnLayout"
+                    columnsM="1"
+                    columnsL="1"
+                    columnsXL="1"
+                >
+                    <Label
+                        id="StartDate"
+                        text="Ngày bắt đầu sản xuất"
+                        labelFor="sDateInput"
+                        required="true"
+                    />
+                    <DatePicker
+                        id="sDateInput"
+                        placeholder="Nhập ngày bắt đầu sản xuất"
+                        required="true"
+                        change="handleChange"
+                        value="{
+                            'path':'OFormEdit>/valuesDate',
+						    'type':'sap.ui.model.type.Date',
+						    'formatOptions': {
+							'pattern': 'dd/MM/y'
+						}
+					}"
+                    />
+                    <Label
+                        id="ConfirmDate"
+                        text="Ngày Hoàn thành"
+                        labelFor="sCFDateInput"
+                        required="true"
+                    />
+                    <DatePicker
+                        id="sCFDateInput"
+                        placeholder="Nhập ngày Hoàn thành"
+                          value="{
+                            'path':'OFormEdit>/valuesCFDateInput',
+						    'type':'sap.ui.model.type.Date',
+						    'formatOptions': {
+							'pattern': 'dd/MM/y'
+						}
+					}"
+                    />
+                    <Label
+                        id="SLCS"
+                        text="Lần chỉnh sửa"
+                        labelFor="sSLCSInput"
+                        required="true"
+                    />
+                    <Input
+                        id="sSLCSInput"
+                        editable="false"
+                        value="{
+                            'path':'OFormEdit>/valuesSLCSInput',
+						    'type':'sap.ui.model.type.Integer'
+					}"
+                    />
+                </f:SimpleForm>
+            </VBox>
+        </content>
+        <footer>
+            <Toolbar id="_IDGenToolbar1">
+                <content>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                    	<Button type="Accept"
+							text="Save"
+                            id="Accept"
+							press=".handleSaveDialog" />
+                    <Button
+                        id="Reject"
+                        text="Close"
+                        type="Reject"
+                        press=".handleCloseDialog"
+                        ariaHasPopup="Dialog"
+                    />
+                </content>
+            </Toolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>
